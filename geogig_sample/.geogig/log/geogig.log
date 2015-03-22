@@ -1,0 +1,61 @@
+2015-03-22 12:10:39,004 WARN [main] o.g.jdbc [CompositePrimaryKeyFinder.java:56] Failure occurred while looking up the primary key with finder: org.geotools.jdbc.HeuristicPrimaryKeyFinder@a5e9a70
+java.sql.SQLException: [SQLITE_ERROR] SQL error or missing database (no such column: type)
+	at org.spatialite.DB.newSQLException(DB.java:385) ~[spatialite-jdbc-3.7.2-2.4.jar:na]
+	at org.spatialite.DB.newSQLException(DB.java:389) ~[spatialite-jdbc-3.7.2-2.4.jar:na]
+	at org.spatialite.DB.throwex(DB.java:376) ~[spatialite-jdbc-3.7.2-2.4.jar:na]
+	at org.spatialite.NativeDB.prepare(Native Method) ~[spatialite-jdbc-3.7.2-2.4.jar:na]
+	at org.spatialite.DB.prepare(DB.java:125) ~[spatialite-jdbc-3.7.2-2.4.jar:na]
+	at org.spatialite.Stmt.executeQuery(Stmt.java:121) ~[spatialite-jdbc-3.7.2-2.4.jar:na]
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208) ~[commons-dbcp-1.4.jar:1.4]
+	at org.geotools.data.spatialite.SpatiaLiteDialect.getMapping(SpatiaLiteDialect.java:171) ~[gt-jdbc-spatialite-11.2.jar:na]
+	at org.geotools.jdbc.HeuristicPrimaryKeyFinder.createPrimaryKey(HeuristicPrimaryKeyFinder.java:105) ~[gt-jdbc-11.2.jar:na]
+	at org.geotools.jdbc.HeuristicPrimaryKeyFinder.getPrimaryKey(HeuristicPrimaryKeyFinder.java:59) ~[gt-jdbc-11.2.jar:na]
+	at org.geotools.jdbc.CompositePrimaryKeyFinder.getPrimaryKey(CompositePrimaryKeyFinder.java:52) ~[gt-jdbc-11.2.jar:na]
+	at org.geotools.jdbc.JDBCDataStore.getPrimaryKey(JDBCDataStore.java:1024) [gt-jdbc-11.2.jar:na]
+	at org.geotools.jdbc.JDBCFeatureSource.<init>(JDBCFeatureSource.java:88) [gt-jdbc-11.2.jar:na]
+	at org.geotools.jdbc.JDBCDataStore.createFeatureSource(JDBCDataStore.java:868) [gt-jdbc-11.2.jar:na]
+	at org.geotools.data.store.ContentDataStore.getFeatureSource(ContentDataStore.java:387) [gt-data-11.2.jar:na]
+	at org.geotools.data.store.ContentDataStore.getFeatureSource(ContentDataStore.java:352) [gt-data-11.2.jar:na]
+	at org.geotools.data.store.ContentDataStore.getFeatureSource(ContentDataStore.java:104) [gt-data-11.2.jar:na]
+	at org.locationtech.geogig.geotools.plumbing.ImportOp.getFeatureSource(ImportOp.java:374) [geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.geotools.plumbing.ImportOp._call(ImportOp.java:185) [geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.geotools.plumbing.ImportOp._call(ImportOp.java:76) [geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.AbstractGeoGigOp.call(AbstractGeoGigOp.java:133) [geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.geotools.cli.porcelain.SLImport.runInternal(SLImport.java:80) [geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-22 12:10:39,014 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:404] null
+org.locationtech.geogig.geotools.plumbing.GeoToolsOpException: null
+	at org.locationtech.geogig.geotools.plumbing.ImportOp.getFeatureSource(ImportOp.java:376) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.geotools.plumbing.ImportOp._call(ImportOp.java:185) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.geotools.plumbing.ImportOp._call(ImportOp.java:76) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.AbstractGeoGigOp.call(AbstractGeoGigOp.java:133) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.geotools.cli.porcelain.SLImport.runInternal(SLImport.java:80) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-22 12:10:57,201 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:404] null
+org.locationtech.geogig.geotools.plumbing.GeoToolsOpException: null
+	at org.locationtech.geogig.geotools.plumbing.ImportOp.checkPreconditions(ImportOp.java:357) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.geotools.plumbing.ImportOp._call(ImportOp.java:133) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.geotools.plumbing.ImportOp._call(ImportOp.java:76) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.AbstractGeoGigOp.call(AbstractGeoGigOp.java:133) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.geotools.cli.porcelain.SLImport.runInternal(SLImport.java:80) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-22 12:14:03,310 INFO [main] o.l.g.r.HttpRemoteRepo [HttpRemoteRepo.java:334] No push batch limit set through push.chunk.limit, using the default of 4194304 bytes
+2015-03-22 12:14:03,313 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:88] scanning for previsit list...
+2015-03-22 12:14:03,315 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:92] Previsit list built in 8.208 μs for 0 ids: []. Calculating reachable content ids...
+2015-03-22 12:14:03,319 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:100] reachableContentIds took 3.678 ms for 0 ids
+2015-03-22 12:14:03,319 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:105] obtaining post order iterator on range...
+2015-03-22 12:14:03,319 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:111] PostOrderIterator.range took 273.0 μs
+2015-03-22 12:14:03,319 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:114] writing objects to remote...
+2015-03-22 12:14:04,777 INFO [main] o.l.g.r.HttpRemoteRepo [HttpRemoteRepo.java:300] HttpRemoteRepo: Written 10 objects. Time to process: 1.470 s. Compressed size: 770 bytes. Uncompressed size: 1,651 bytes.
+2015-03-22 12:14:05,479 INFO [main] o.l.g.a.p.SendPack [SendPack.java:214] Pushing Ref[refs/heads/master -> b270aef16f297c657379aa3ee06bd5c86afe6296] to refs/remotes/origin/master(null)
+2015-03-22 12:15:18,829 INFO [Thread-3] o.l.g.r.HttpRemoteRepo [HttpRemoteRepo.java:467] Processed 10 objects. Inserted: 10. Existing: 0. Time: 481.3 ms. Compressed size: 770 bytes. Uncompressed size: 1,651 bytes.
