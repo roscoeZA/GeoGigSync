@@ -59,3 +59,111 @@ org.locationtech.geogig.geotools.plumbing.GeoToolsOpException: null
 2015-03-22 12:14:04,777 INFO [main] o.l.g.r.HttpRemoteRepo [HttpRemoteRepo.java:300] HttpRemoteRepo: Written 10 objects. Time to process: 1.470 s. Compressed size: 770 bytes. Uncompressed size: 1,651 bytes.
 2015-03-22 12:14:05,479 INFO [main] o.l.g.a.p.SendPack [SendPack.java:214] Pushing Ref[refs/heads/master -> b270aef16f297c657379aa3ee06bd5c86afe6296] to refs/remotes/origin/master(null)
 2015-03-22 12:15:18,829 INFO [Thread-3] o.l.g.r.HttpRemoteRepo [HttpRemoteRepo.java:467] Processed 10 objects. Inserted: 10. Existing: 0. Time: 481.3 ms. Compressed size: 770 bytes. Uncompressed size: 1,651 bytes.
+2015-03-23 17:26:41,966 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: null. See the log for more details.
+java.lang.NullPointerException: null
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:79) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:26:56,771 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: null. See the log for more details.
+java.lang.NullPointerException: null
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:79) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:27:59,785 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: Index: 1, Size: 1. See the log for more details.
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(ArrayList.java:635) ~[na:1.7.0_75]
+	at java.util.ArrayList.get(ArrayList.java:411) ~[na:1.7.0_75]
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:85) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:28:11,715 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: null. See the log for more details.
+java.lang.NullPointerException: null
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:79) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:28:15,029 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: null. See the log for more details.
+java.lang.NullPointerException: null
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:79) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:28:26,276 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: Index: 1, Size: 1. See the log for more details.
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(ArrayList.java:635) ~[na:1.7.0_75]
+	at java.util.ArrayList.get(ArrayList.java:411) ~[na:1.7.0_75]
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:85) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:31:00,434 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: null. See the log for more details.
+java.lang.NullPointerException: null
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:79) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:31:15,265 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: null. See the log for more details.
+java.lang.NullPointerException: null
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:79) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:31:20,208 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: null. See the log for more details.
+java.lang.NullPointerException: null
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:79) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:32:39,706 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: null. See the log for more details.
+java.lang.NullPointerException: null
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:79) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:33:24,311 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: null. See the log for more details.
+java.lang.NullPointerException: null
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:79) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:34:43,653 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: Index: 1, Size: 1. See the log for more details.
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(ArrayList.java:635) ~[na:1.7.0_75]
+	at java.util.ArrayList.get(ArrayList.java:411) ~[na:1.7.0_75]
+	at org.locationtech.geogig.geotools.cli.porcelain.SLExport.runInternal(SLExport.java:85) ~[geogig-geotools-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:35:00,128 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:413] An unhandled error occurred: Ref spec (a) matches more than one object id: [a5209bba692fc0b71b9c42f4759de39f2b3cbe9f, a56eaebb2ce2c8d65f0665090c3c29634620092e, a774ff793043a5ed37404d773f02d2b9eaffdce9, a106180218cd89f075f90e8b6df47e1a180e6eb7]. See the log for more details.
+java.lang.IllegalArgumentException: Ref spec (a) matches more than one object id: [a5209bba692fc0b71b9c42f4759de39f2b3cbe9f, a56eaebb2ce2c8d65f0665090c3c29634620092e, a774ff793043a5ed37404d773f02d2b9eaffdce9, a106180218cd89f075f90e8b6df47e1a180e6eb7]
+	at org.locationtech.geogig.api.plumbing.RevParse.resolveObject(RevParse.java:337) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.plumbing.RevParse.revParse(RevParse.java:137) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.plumbing.RevParse._call(RevParse.java:98) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.plumbing.RevParse._call(RevParse.java:34) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.AbstractGeoGigOp.call(AbstractGeoGigOp.java:133) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.plumbing.RevObjectParse.call(RevObjectParse.java:70) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.plumbing.RevObjectParse._call(RevObjectParse.java:59) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.plumbing.RevObjectParse._call(RevObjectParse.java:26) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.AbstractGeoGigOp.call(AbstractGeoGigOp.java:133) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.porcelain.Show.printFormatted(Show.java:140) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.porcelain.Show.runInternal(Show.java:78) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-23 17:35:10,668 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:404] null
