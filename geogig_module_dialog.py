@@ -26,6 +26,11 @@ import geo_repo
 from geogigpy import Repository
 from PyQt4 import QtGui, uic
 from geogigpy import repo
+import csv
+import sys
+sys.path.append('~/dev/geogig_auto/GeoGigSync/pycharm-debug.egg_FILES/')
+sys.path.append('~/dev/pydev/')
+import pydevd
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'geogig_module_dialog_base.ui'))
@@ -45,13 +50,18 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         self.btnClone.clicked.connect(self.clone_repo)
         self.btnSync.clicked.connect(self.sync_repo)
 
+        self.configPath = os.path.dirname(os.path.realpath('geo_repo.py'))
+        self.fname = os.path.join(self.configPath, "config.csv")
+        self.populate_clone()
+        print(self.fname)
+
     def clone_repo(self):
         remote = self.txtRemote.text()
         path = self.txtDir.text()
         sql_database = path + 'database.sqlite'
-        repoObject = geo_repo.GeoRepo(remote, path, sql_database)
+        repos = geo_repo.GeoRepo(remote, path, sql_database)
         # Ideally should create a boolean decorator to check if connected.
-        repoObject.export_to_spatialite()
+        repos.export_to_spatialite()
 
     def sync_repo(self):
         remote = self.txtRemote.text()
@@ -61,9 +71,26 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         name = self.txtName.text()
         email = self.txtEmail.text()
         message = self.txtMessage.text()
-        repoObject = geo_repo.GeoRepo(remote, path, sql_database)
-        repoObject.add_commit_push()
+        repos = geo_repo.GeoRepo(remote, path, sql_database)
+        repos.add_commit_push(name, email, message)
 
-
+    def populate_clone(self):
+        if os.path.isfile(self.fname):
+            pydevd.settrace('localhost',
+            port=53100,
+            stdoutToServer=True,
+            stderrToServer=True)
+            with open(self.fname, 'rb') as csvfile:
+                csv_reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+                for row in csv_reader:
+                    self.txtRemote.setText(row[0])
+                    print (row)
+        else:
+            print "creating new file"
+            with open(self.fname, 'wb') as csvfile:
+                csv_writer = csv.writer(csvfile, delimiter=' ',
+                                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                csv_writer.writerow(['http://localhost:38080'])
+                self.txtRemote.setText("http://localhost:38080")
 
 

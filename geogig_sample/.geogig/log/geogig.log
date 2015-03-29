@@ -167,3 +167,22 @@ java.lang.IllegalArgumentException: Ref spec (a) matches more than one object id
 	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
 	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
 2015-03-23 17:35:10,668 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:404] null
+2015-03-27 14:38:06,746 ERROR [main] o.l.g.c.GeogigCLI [GeogigCLI.java:404] null
+org.locationtech.geogig.api.porcelain.NothingToCommitException: Nothing to commit after b270aef16f297c657379aa3ee06bd5c86afe6296
+	at org.locationtech.geogig.api.porcelain.CommitOp._call(CommitOp.java:320) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.porcelain.CommitOp._call(CommitOp.java:57) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.api.AbstractGeoGigOp.call(AbstractGeoGigOp.java:133) ~[geogig-core-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.porcelain.Commit.runInternal(Commit.java:114) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.AbstractCommand.run(AbstractCommand.java:65) ~[geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.executeInternal(GeogigCLI.java:526) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.execute(GeogigCLI.java:384) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+	at org.locationtech.geogig.cli.GeogigCLI.main(GeogigCLI.java:329) [geogig-cli-1.0-SNAPSHOT.jar:1.0-SNAPSHOT]
+2015-03-27 14:39:14,730 INFO [main] o.l.g.r.HttpRemoteRepo [HttpRemoteRepo.java:334] No push batch limit set through push.chunk.limit, using the default of 4194304 bytes
+2015-03-27 14:39:14,735 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:88] scanning for previsit list...
+2015-03-27 14:39:14,736 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:92] Previsit list built in 12.79 μs for 0 ids: []. Calculating reachable content ids...
+2015-03-27 14:39:14,741 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:100] reachableContentIds took 3.886 ms for 0 ids
+2015-03-27 14:39:14,741 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:105] obtaining post order iterator on range...
+2015-03-27 14:39:14,741 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:111] PostOrderIterator.range took 305.5 μs
+2015-03-27 14:39:14,741 INFO [main] o.l.g.r.BinaryPackedObjects [BinaryPackedObjects.java:114] writing objects to remote...
+2015-03-27 14:39:15,922 INFO [main] o.l.g.r.HttpRemoteRepo [HttpRemoteRepo.java:300] HttpRemoteRepo: Written 10 objects. Time to process: 1.195 s. Compressed size: 770 bytes. Uncompressed size: 1,651 bytes.
+2015-03-27 14:39:16,389 INFO [main] o.l.g.a.p.SendPack [SendPack.java:214] Pushing Ref[refs/heads/master -> b270aef16f297c657379aa3ee06bd5c86afe6296] to refs/remotes/origin/master(null)

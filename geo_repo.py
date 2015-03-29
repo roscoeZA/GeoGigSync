@@ -5,6 +5,7 @@ from geogigpy import Repository
 from geogigpy import geogig
 from geogigpy import repo
 from datetime import datetime
+import pydevd
 
 class GeoRepo(object):
 
@@ -13,15 +14,10 @@ class GeoRepo(object):
         self.remote = remote
         self.path = path
         self.sql_database = path + 'database.sqlite'
-        #Placeholder repo.
         print os.getcwd()
         self.local_repo = self.connect2repo()
 
-
-    def connect2repo(self):#, remote, path, sql_database):
-        # self.remote = remote
-        # self.path = path
-        # self.sql_database = sql_database
+    def connect2repo(self):
         if os.path.isdir(os.path.join(self.path, '.geogig')):
             print "Set to existing repo"
             local_repo = Repository(self.path)
@@ -30,21 +26,19 @@ class GeoRepo(object):
             local_repo = Repository.newrepofromclone(self.remote, self.path)
             print "New repo from clone"
             return local_repo
-            return
 
     def export_to_spatialite(self):
-        try:
-            print "Exporting layers to database.sqlite"
-            for t in self.local_repo.trees:
-                print ""
-                print t.path
+        print "Exporting layers to database.sqlite"
+        for t in self.local_repo.trees:
+            print t.path
+
+            if t.path not in ("layer_statistics", "views_layer_statistics", "virts_layer_statistics"):
+                print "t.path: " + t.path
                 try:
-                    print self.sql_database
                     self.local_repo.exportsl('HEAD', t.path, self.sql_database)
-                finally:
-                    pass
-        except repo.GeoGigException, e:
-            print e
+                except repo.GeoGigException, e:
+                    print e
+                    continue
 
     def import_from_spatialite(self):
         try:
@@ -53,13 +47,10 @@ class GeoRepo(object):
         except repo.GeoGigException, e:
             print e
 
-    # def configRepo(self, name = "test", email="a@b.c"):
-
-
-    def add_commit_push(self):
-        message = str(datetime.now())
-        self.local_repo.config(geogig.USER_NAME, 'myuser')
-        self.local_repo.config(geogig.USER_EMAIL, 'myuser@mymail.com')
+    def add_commit_push(self, name, email, message):
+        message += " " + str(datetime.now())
+        self.local_repo.config(geogig.USER_NAME, name)
+        self.local_repo.config(geogig.USER_EMAIL, email)
         try:
             self.import_from_spatialite()
             print 'Spatialite imported.'
@@ -76,13 +67,8 @@ class GeoRepo(object):
         except repo.GeoGigException, e:
             print e
 
-        #add_commit_push()
-
-        #import_from_spatialite()
-
-
         # Notes:
-        #------------------------------------------------------------------------
+        # ------------------------------------------------------------------------
         # changed self.connector.importpg to self.connector.importsl in repo.py
         # changed commands.extend(["--table", table]) to commands.extend(["--all"])
         # def importsl(self, database, table, add = False, dest = None):
