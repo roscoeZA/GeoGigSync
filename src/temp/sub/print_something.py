@@ -1,0 +1,2 @@
+def printaline():
+    print "test"

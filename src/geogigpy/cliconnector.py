@@ -11,7 +11,7 @@ import datetime
 from diff import Diffentry, ATTRIBUTE_DIFF_MODIFIED
 from connector import Connector
 from commitish import Commitish
-from geogigpy.geogigexception import GeoGigException, GeoGigConflictException, UnconfiguredUserException
+from geogigexception import GeoGigException, GeoGigConflictException, UnconfiguredUserException
 from geometry import Geometry
 from copy import deepcopy
 from geogigexception import GeoGigException

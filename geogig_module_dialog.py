@@ -20,17 +20,13 @@
  *                                                                         *
  ***************************************************************************/
 """
-
 import os
 import geo_repo
-from geogigpy import Repository
 from PyQt4 import QtGui, uic
-from geogigpy import repo
 import csv
 import sys
-sys.path.append('~/dev/geogig_auto/GeoGigSync/pycharm-debug.egg_FILES/')
-sys.path.append('~/dev/pydev/')
-import pydevd
+
+
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'geogig_module_dialog_base.ui'))
@@ -46,51 +42,92 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
+        self.configPath = os.path.dirname(os.path.realpath(__file__))
+        self.fname = os.path.join(self.configPath, "config.csv")
+        self.repo_list = []
         #  self.sync_button.clicked.connect(self.clone_repo)
+
+        self.get_fields()
+        self.reload()
         self.btnClone.clicked.connect(self.clone_repo)
         self.btnSync.clicked.connect(self.sync_repo)
-
-        self.configPath = os.path.dirname(os.path.realpath('geo_repo.py'))
-        self.fname = os.path.join(self.configPath, "config.csv")
-        self.populate_clone()
-        print(self.fname)
+        self.btnAdd.clicked.connect(self.set_fields)
+        self.btnDelete.clicked.connect(self.delete_field)
 
     def clone_repo(self):
-        remote = self.txtRemote.text()
+        remote = self.listRepos.currentItem().text()
+        # print self.listRepos.selectedItems()
+        self.set_fields()
         path = self.txtDir.text()
-        sql_database = path + 'database.sqlite'
-        repos = geo_repo.GeoRepo(remote, path, sql_database)
+        sql_database = os.path.join(path, 'database.sqlite')
+        repos = geo_repo.GeoRepo(remote, path)
         # Ideally should create a boolean decorator to check if connected.
-        repos.export_to_spatialite()
+        if self.radioSpatialiteClone.isChecked():
+            repos.export_to_spatialite()
+        else:
+            repos.export_to_shapefiles()
 
     def sync_repo(self):
-        remote = self.txtRemote.text()
+        remote = self.listRepos.currentItem().text()
         path = self.txtDir.text()
         sql_database = path + 'database.sqlite'
 
         name = self.txtName.text()
         email = self.txtEmail.text()
         message = self.txtMessage.text()
-        repos = geo_repo.GeoRepo(remote, path, sql_database)
-        repos.add_commit_push(name, email, message)
-
-    def populate_clone(self):
-        if os.path.isfile(self.fname):
-            pydevd.settrace('localhost',
-            port=53100,
-            stdoutToServer=True,
-            stderrToServer=True)
-            with open(self.fname, 'rb') as csvfile:
-                csv_reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-                for row in csv_reader:
-                    self.txtRemote.setText(row[0])
-                    print (row)
+        input_type = ""
+        if self.radioSpatialiteSync.isChecked():
+            input_type = "spatialite"
         else:
-            print "creating new file"
-            with open(self.fname, 'wb') as csvfile:
-                csv_writer = csv.writer(csvfile, delimiter=' ',
+            input_type = "shapefiles"
+        repos = geo_repo.GeoRepo(remote, path)
+        repos.add_commit_push(name, email, message, input_type)
+
+    def get_fields(self):
+        if os.path.isfile(self.fname):
+            with open(self.fname, 'r+b') as csvfile:
+                csv_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+                for row in csv_reader:
+                    self.repo_list.append(row[0])
+        else:
+            print "Creating new file"
+            with open(self.fname, 'w+b') as csvfile:
+                csv_writer = csv.writer(csvfile, delimiter=',',
                                         quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                csv_writer.writerow(['http://localhost:38080'])
-                self.txtRemote.setText("http://localhost:38080")
+                csv_writer.writerow(['http://52.10.196.73:38080'])
+                self.txtRemote.setText("http://52.10.196.73:38080")
+
+    def set_fields(self):
+        new_repo = self.txtRemote.text()
+        self.repo_list.append(new_repo)
+        self.save()
+        self.reload()
+
+    def save(self):
+        with open(self.fname, 'w+b') as csvfile:
+            csv_writer = csv.writer(csvfile, delimiter=' ',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)
+
+            for item in self.repo_list:
+                if item:
+                    csv_writer.writerow([item])
+
+    def reload(self):
+        self.listRepos.clear()
+        self.repo_list = []
+        self.get_fields()
+        for item in self.repo_list:
+            if item:
+                self.listRepos.addItem(item)
+
+    def delete_field(self):
+        selected = self.listRepos.currentRow()
+        self.repo_list.pop(selected)
+        self.save()
+        self.reload()
+
+
+
+
 
 
