@@ -88,11 +88,28 @@ class GeoRepo(object):
             print 'Repo added and committed.'
         except GeoGigException, e:
             print e
+        # try:
+        #     self.local_repo.push("origin")
+        #     print 'Repo pushed.'
+        # except GeoGigException, e:
+        #     print e
+
+    def push_to_remote(self):
         try:
-            self.local_repo.push("origin")
+            print self.local_repo.remotes.items()
+            self.local_repo.push("origin","master",True)
+
             print 'Repo pushed.'
         except GeoGigException, e:
             print e
+
+    def pull_from_remote(self):
+        try:
+            self.local_repo.pull("origin")
+        except GeoGigException, e:
+            print e
+
+
 
         # Notes:
         # ------------------------------------------------------------------------

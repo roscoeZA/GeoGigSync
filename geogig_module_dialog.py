@@ -53,10 +53,11 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         self.btnSync.clicked.connect(self.sync_repo)
         self.btnAdd.clicked.connect(self.set_fields)
         self.btnDelete.clicked.connect(self.delete_field)
+        self.btnPush.clicked.connect(self.push)
 
     def clone_repo(self):
         remote = self.listRepos.currentItem().text()
-        # print self.listRepos.selectedItems()
+        print self.listRepos.selectedItems()
         self.set_fields()
         path = self.txtDir.text()
         sql_database = os.path.join(path, 'database.sqlite')
@@ -126,6 +127,13 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         self.save()
         self.reload()
 
+    def push(self):
+        remote = 'http' #self.listRepos.currentItem().text()
+        path = self.txtDir.text()
+        repos = geo_repo.GeoRepo(remote, path)
+        print "Remote: " + remote + " Path: " + path
+        repos.push_to_remote()
+        #repos.export_to_shapefiles()
 
 
 

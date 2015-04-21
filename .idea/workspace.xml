@@ -45,8 +45,8 @@
       <file leaf-file-name="geo_repo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/geo_repo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8509249" vertical-offset="0" max-vertical-offset="1853">
-              <caret line="46" column="81" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
+            <state vertical-scroll-proportion="0.554951" vertical-offset="1173" max-vertical-offset="2142">
+              <caret line="99" column="55" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
               <folding>
                 <element signature="e#22#31#0" expanded="true" />
               </folding>
@@ -54,11 +54,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="repo.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geogigpy/repo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="10148" max-vertical-offset="11067">
+              <caret line="637" column="32" selection-start-line="637" selection-start-column="32" selection-end-line="637" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cliconnector.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geogigpy/cliconnector.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="12868" max-vertical-offset="13787">
+              <caret line="806" column="8" selection-start-line="806" selection-start-column="8" selection-end-line="806" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="geogig_module_dialog.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geogig_module_dialog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="2363">
-              <caret line="59" column="25" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1580" max-vertical-offset="2499">
+              <caret line="83" column="46" selection-start-line="83" selection-start-column="46" selection-end-line="83" selection-end-column="46" />
               <folding>
                 <element signature="e#1161#1170#0" expanded="true" />
               </folding>
@@ -77,8 +97,8 @@
         <option value="$PROJECT_DIR$/src/geogigpy/commit.py" />
         <option value="$PROJECT_DIR$/src/geogigpy/cliconnector.py" />
         <option value="$PROJECT_DIR$/scrap.py" />
-        <option value="$PROJECT_DIR$/geo_repo.py" />
         <option value="$PROJECT_DIR$/geogig_module_dialog.py" />
+        <option value="$PROJECT_DIR$/geo_repo.py" />
       </list>
     </option>
   </component>
@@ -892,20 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geogigpy/cliconnector.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="13518" max-vertical-offset="14059">
-          <caret line="811" column="0" selection-start-line="811" selection-start-column="0" selection-end-line="811" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geogigpy/repo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="10649" max-vertical-offset="11271">
-          <caret line="637" column="0" selection-start-line="637" selection-start-column="0" selection-end-line="637" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scrap.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="1054">
@@ -918,18 +924,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geogig_module_dialog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="2363">
-          <caret line="59" column="25" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1580" max-vertical-offset="2499">
+          <caret line="83" column="46" selection-start-line="83" selection-start-column="46" selection-end-line="83" selection-end-column="46" />
           <folding>
             <element signature="e#1161#1170#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/geogigpy/cliconnector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="12868" max-vertical-offset="13787">
+          <caret line="806" column="8" selection-start-line="806" selection-start-column="8" selection-end-line="806" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geogigpy/repo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10148" max-vertical-offset="11067">
+          <caret line="637" column="32" selection-start-line="637" selection-start-column="32" selection-end-line="637" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/geo_repo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8509249" vertical-offset="0" max-vertical-offset="1853">
-          <caret line="46" column="81" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
+        <state vertical-scroll-proportion="0.554951" vertical-offset="1173" max-vertical-offset="2142">
+          <caret line="99" column="55" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
           <folding>
             <element signature="e#22#31#0" expanded="true" />
           </folding>

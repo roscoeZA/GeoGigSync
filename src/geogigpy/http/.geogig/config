@@ -1,0 +1,12 @@
+[bdbje]
+version = 0.2
+[file]
+version = 1.0
+[storage]
+graph = bdbje
+objects = bdbje
+refs = file
+staging = bdbje
+[remote\origin]
+url = http
+fetch = +refs/heads/*:refs/remotes/origin/*
