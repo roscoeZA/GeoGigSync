@@ -7,8 +7,9 @@ from src.geogigpy.geogigexception import GeoGigException
 
 class GeoRepo(object):
 
-    def __init__(self, remote, path):
+    def __init__(self, remote, path, repo_type):
         """constructor"""
+        self.repo_type = repo_type
         self.remote = remote
         self.path = path
         self.sql_database = os.path.join(self.path, 'database.sqlite')
@@ -21,8 +22,12 @@ class GeoRepo(object):
             local_repo = Repository(self.path)
             return local_repo
         else:
-            local_repo = Repository.newrepofromclone(self.remote, self.path)
-            print "New repo from clone"
+            if self.repo_type=="remote":
+                local_repo = Repository.newrepofromclone(self.remote, self.path)
+                print "New repo from clone"
+            else:
+                local_repo = Repository(self.path, init=True)
+                print "New repo initialized at : %s" % self.path
             return local_repo
 
     def export_to_spatialite(self):

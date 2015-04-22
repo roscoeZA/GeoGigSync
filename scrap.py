@@ -39,19 +39,29 @@ import csv
 #     time.sleep(1)
 #     n.start()
 #
-repo_list = {}
-with open('C:\Users\Roscoe\.qgis2\python\plugins\GeoGigSync-master\config.csv', 'r+b') as csvfile:
-    csv_reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-    for row in csv_reader:
-        print row
-        repo_list.(row)
 
-print '-------------'
-for item in repo_list:
-    print item
+import csv
 
-print repo_list.viewitems()
+configPath = os.path.dirname(os.path.realpath(__file__))
+fname = os.path.join(configPath, "config.csv")
+repos_dict = {}
 
-print '-------------'
-for item in repo_list:
-    print item
+with open(fname, 'w') as csvfile:
+    fieldnames = ['first_name', 'last_name']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
+    writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
+    writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
+
+with open(fname) as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        # print(row['first_name'], row['last_name'])
+        repos_dict[row['first_name']] = row['last_name']
+
+
+print repos_dict
+
+

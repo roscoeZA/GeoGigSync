@@ -45,15 +45,24 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         self.configPath = os.path.dirname(os.path.realpath(__file__))
         self.fname = os.path.join(self.configPath, "config.csv")
         self.repo_list = []
+        self.repo_type = "local"
         #  self.sync_button.clicked.connect(self.clone_repo)
 
         self.get_fields()
         self.reload()
+        self.radioLocal.toggled.connect(self.set_repo_type)
+        self.radioRemote.toggled.connect(self.set_repo_type)
         self.btnClone.clicked.connect(self.clone_repo)
         self.btnSync.clicked.connect(self.sync_repo)
         self.btnAdd.clicked.connect(self.set_fields)
         self.btnDelete.clicked.connect(self.delete_field)
         self.btnPush.clicked.connect(self.push)
+
+    def set_repo_type(self):
+        if self.radioLocal.isChecked():
+            self.repo_type = "local"
+        else:
+            self.repo_type = "remote"
 
     def clone_repo(self):
         remote = self.listRepos.currentItem().text()
@@ -61,12 +70,13 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         self.set_fields()
         path = self.txtDir.text()
         sql_database = os.path.join(path, 'database.sqlite')
-        repos = geo_repo.GeoRepo(remote, path)
+        repos = geo_repo.GeoRepo(remote, path, self.repo_type)
         # Ideally should create a boolean decorator to check if connected.
         if self.radioSpatialiteClone.isChecked():
             repos.export_to_spatialite()
         else:
             repos.export_to_shapefiles()
+
 
     def sync_repo(self):
         remote = self.listRepos.currentItem().text()
@@ -81,7 +91,7 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
             input_type = "spatialite"
         else:
             input_type = "shapefiles"
-        repos = geo_repo.GeoRepo(remote, path)
+        repos = geo_repo.GeoRepo(remote, path, self.repo_type)
         repos.add_commit_push(name, email, message, input_type)
 
     def get_fields(self):
@@ -100,6 +110,7 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
 
     def set_fields(self):
         new_repo = self.txtRemote.text()
+        new_dir = self.txtDir.text()
         self.repo_list.append(new_repo)
         self.save()
         self.reload()
@@ -130,10 +141,11 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
     def push(self):
         remote = 'http' #self.listRepos.currentItem().text()
         path = self.txtDir.text()
-        repos = geo_repo.GeoRepo(remote, path)
+        repos = geo_repo.GeoRepo(remote, path, self.repo_type)
         print "Remote: " + remote + " Path: " + path
         repos.push_to_remote()
         #repos.export_to_shapefiles()
+
 
 
 
