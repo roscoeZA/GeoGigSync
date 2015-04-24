@@ -44,10 +44,10 @@ class GeoRepo(object):
     def export_to_shapefiles(self):
         print "Trying to export layers to shapefiles"
         for t in self.local_repo.trees:
-            print t.path
+            # print t.path
 
             if t.path not in ("layer_statistics", "views_layer_statistics", "virts_layer_statistics"):
-                print "t.path: " + t.path
+                # print "t.path: " + t.path
                 try:
                     self.local_repo.exportshp('HEAD', t.path, os.path.join('HEAD', t.path,
                                                                            os.path.join(self.path, t.path) + '.shp'))
@@ -101,7 +101,6 @@ class GeoRepo(object):
 
     def push_to_remote(self):
         try:
-            print self.local_repo.remotes.items()
             self.local_repo.push("origin","master",True)
 
             print 'Repo pushed.'
@@ -113,8 +112,6 @@ class GeoRepo(object):
             self.local_repo.pull("origin")
         except GeoGigException, e:
             print e
-
-
 
         # Notes:
         # ------------------------------------------------------------------------

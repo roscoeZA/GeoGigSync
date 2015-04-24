@@ -46,22 +46,15 @@ configPath = os.path.dirname(os.path.realpath(__file__))
 fname = os.path.join(configPath, "config.csv")
 repos_dict = {}
 
-with open(fname, 'w') as csvfile:
-    fieldnames = ['first_name', 'last_name']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-    writer.writeheader()
-    writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
-    writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
-    writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
-
-with open(fname) as csvfile:
-    reader = csv.DictReader(csvfile)
-    for row in reader:
-        # print(row['first_name'], row['last_name'])
-        repos_dict[row['first_name']] = row['last_name']
+import csv
+with open(fname, 'r') as infile:
+    reader = csv.reader(infile)
+    with open('coors_new.csv', mode='w') as outfile:
+        writer = csv.writer(outfile)
+        repos_dict = dict(row[:2] for row in reader if row)
 
 
-print repos_dict
+for key in repos_dict:
+    print key + repos_dict[key]
 
 

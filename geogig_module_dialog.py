@@ -44,33 +44,59 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         self.setupUi(self)
         self.configPath = os.path.dirname(os.path.realpath(__file__))
         self.fname = os.path.join(self.configPath, "config.csv")
-        self.repo_list = []
-        self.repo_type = "local"
+        self.repo_dict = {}
+        self.repo_type = "remote"
+        self.export_type = "shapefiles"
+        self.remote = ""
+        self.path = ""
+        self.key_no = 0
         #  self.sync_button.clicked.connect(self.clone_repo)
 
         self.get_fields()
         self.reload()
-        self.radioLocal.toggled.connect(self.set_repo_type)
         self.radioRemote.toggled.connect(self.set_repo_type)
+        self.radioShapefilesClone.toggled.connect(self.set_repo_type)
         self.btnClone.clicked.connect(self.clone_repo)
         self.btnSync.clicked.connect(self.sync_repo)
         self.btnAdd.clicked.connect(self.set_fields)
         self.btnDelete.clicked.connect(self.delete_field)
         self.btnPush.clicked.connect(self.push)
+        self.listRepos.itemClicked.connect(self.set_repo_type)
 
+    # Change set_repo_type to set_repo
     def set_repo_type(self):
+        self.key_no = self.listRepos.row(self.listRepos.currentItem())
         if self.radioLocal.isChecked():
             self.repo_type = "local"
+
         else:
             self.repo_type = "remote"
+        self.remote = self.repo_dict.keys()[self.key_no]
+        self.path = self.repo_dict.values()[self.key_no]
+        if self.radioShapefilesClone.isChecked():
+            self.export_type = "shapefiles"
+        else:
+            self.export_type = "spatialite"
+        self.remote = self.repo_dict.keys()[self.key_no]
+        self.path = self.repo_dict.values()[self.key_no]
+        print self.repo_type
+        print self.path
+        print self.export_type
+        print "remote: " + self.remote
+        print "path: " + self.path
+
+
+    # def set_export_type(self):
+    #     if self.radioShapefilesClone.isChecked():
+    #         self.export_type = "shapefiles"
+    #     else:
+    #         self.export_type = "spatialite"
 
     def clone_repo(self):
-        remote = self.listRepos.currentItem().text()
-        print self.listRepos.selectedItems()
-        self.set_fields()
-        path = self.txtDir.text()
-        sql_database = os.path.join(path, 'database.sqlite')
-        repos = geo_repo.GeoRepo(remote, path, self.repo_type)
+        # remote = self.repo_dict.keys()[self.key_no]
+        # path = self.repo_dict.values()[self.key_no]
+        sql_database = os.path.join(self.path, 'database.sqlite')
+        repos = geo_repo.GeoRepo(self.remote, self.path, self.repo_type)
         # Ideally should create a boolean decorator to check if connected.
         if self.radioSpatialiteClone.isChecked():
             repos.export_to_spatialite()
@@ -79,9 +105,9 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
 
 
     def sync_repo(self):
-        remote = self.listRepos.currentItem().text()
-        path = self.txtDir.text()
-        sql_database = path + 'database.sqlite'
+        # remote = self.listRepos.currentItem().text()
+        # path = self.txtDir.text()
+        sql_database = self.path + 'database.sqlite'
 
         name = self.txtName.text()
         email = self.txtEmail.text()
@@ -91,60 +117,63 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
             input_type = "spatialite"
         else:
             input_type = "shapefiles"
-        repos = geo_repo.GeoRepo(remote, path, self.repo_type)
+        repos = geo_repo.GeoRepo(self.remote, self.path, self.repo_type)
         repos.add_commit_push(name, email, message, input_type)
 
     def get_fields(self):
         if os.path.isfile(self.fname):
-            with open(self.fname, 'r+b') as csvfile:
-                csv_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-                for row in csv_reader:
-                    self.repo_list.append(row[0])
+            with open(self.fname, 'r+b') as csvfile_in:
+                reader = csv.reader(csvfile_in)
+                self.repo_dict = dict(row[:2] for row in reader if row)
+
         else:
-            print "Creating new file"
             with open(self.fname, 'w+b') as csvfile:
-                csv_writer = csv.writer(csvfile, delimiter=',',
-                                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                csv_writer.writerow(['http://52.10.196.73:38080'])
-                self.txtRemote.setText("http://52.10.196.73:38080")
+                fieldnames = ['url', 'dir']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer.writerow({'url': 'Baked', 'dir': 'Beans'})
 
     def set_fields(self):
         new_repo = self.txtRemote.text()
         new_dir = self.txtDir.text()
-        self.repo_list.append(new_repo)
+        # self.repo_dict.append(new_repo)
+        self.repo_dict.update({new_repo: new_dir})
+        #self.repo_dict[new_repo] = [new_dir]
         self.save()
         self.reload()
 
     def save(self):
         with open(self.fname, 'w+b') as csvfile:
-            csv_writer = csv.writer(csvfile, delimiter=' ',
-                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            writer = csv.writer(csvfile)
+            for key, value in self.repo_dict.items():
+                writer.writerow([key, value])
 
-            for item in self.repo_list:
-                if item:
-                    csv_writer.writerow([item])
 
     def reload(self):
         self.listRepos.clear()
-        self.repo_list = []
+        self.repo_dict = {}
         self.get_fields()
-        for item in self.repo_list:
-            if item:
-                self.listRepos.addItem(item)
+        for item in self.repo_dict:
+            self.listRepos.addItem(item + " : " + self.repo_dict[item])
 
     def delete_field(self):
-        selected = self.listRepos.currentRow()
-        self.repo_list.pop(selected)
+        item = self.listRepos.currentItem().text()
+        self.key_no = self.listRepos.row(self.listRepos.currentItem())
+        key = self.repo_dict.keys()[self.key_no]
+        value = self.repo_dict.values()[self.key_no]
+        del self.repo_dict[key]
         self.save()
         self.reload()
 
     def push(self):
-        remote = 'http' #self.listRepos.currentItem().text()
-        path = self.txtDir.text()
-        repos = geo_repo.GeoRepo(remote, path, self.repo_type)
-        print "Remote: " + remote + " Path: " + path
+        repos = geo_repo.GeoRepo(self.remote, self.path, self.repo_type)
+        print "Remote: " +self.remote + " Path: " + self.path
         repos.push_to_remote()
-        #repos.export_to_shapefiles()
+
+    def pull(self):
+        repos = geo_repo.GeoRepo(self.remote, self.path, self.repo_type)
+        repos.pull_from_remote()
+        repos.export_to_shapefiles()
+        
 
 
 
