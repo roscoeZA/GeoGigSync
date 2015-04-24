@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>673</width>
-    <height>324</height>
+    <width>714</width>
+    <height>295</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>220</y>
+     <x>140</x>
+     <y>250</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -34,8 +34,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>351</width>
-     <height>211</height>
+     <width>411</width>
+     <height>231</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -50,8 +50,8 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>295</width>
-       <height>103</height>
+       <width>393</width>
+       <height>132</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
@@ -109,7 +109,33 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="4">
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>160</y>
+       <width>269</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Pull</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnPush">
+        <property name="text">
+         <string>Push</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="btnSync">
         <property name="text">
          <string>Add</string>
@@ -117,32 +143,6 @@
        </widget>
       </item>
      </layout>
-    </widget>
-    <widget class="QPushButton" name="btnPush">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>130</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Push</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>160</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Pull</string>
-     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
@@ -154,7 +154,7 @@
       <rect>
        <x>20</x>
        <y>40</y>
-       <width>300</width>
+       <width>373</width>
        <height>100</height>
       </rect>
      </property>
@@ -244,7 +244,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>71</width>
+        <width>91</width>
         <height>16</height>
        </rect>
       </property>
@@ -255,87 +255,62 @@
     </widget>
    </widget>
   </widget>
-  <widget class="QListWidget" name="listRepos">
+  <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>420</x>
      <y>20</y>
-     <width>271</width>
-     <height>81</height>
+     <width>274</width>
+     <height>201</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QPushButton" name="btnDelete">
-   <property name="geometry">
-    <rect>
-     <x>500</x>
-     <y>180</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Delete</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnAdd">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>180</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Add</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtRemote">
-   <property name="geometry">
-    <rect>
-     <x>438</x>
-     <y>110</y>
-     <width>221</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelRemote_2">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>140</y>
-     <width>51</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Directory: </string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtDir">
-   <property name="geometry">
-    <rect>
-     <x>437</x>
-     <y>140</y>
-     <width>221</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelRemoteURL">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>110</y>
-     <width>46</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Remote: </string>
-   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0" colspan="3">
+     <widget class="QListWidget" name="listRepos"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="labelRemoteURL">
+      <property name="text">
+       <string>Remote: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1" colspan="2">
+     <widget class="QLineEdit" name="txtRemote"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="labelRemote_2">
+      <property name="text">
+       <string>Directory: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" colspan="2">
+     <widget class="QLineEdit" name="txtDir"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="btnDelete">
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QPushButton" name="btnAdd">
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+   <zorder>btnDelete</zorder>
+   <zorder>btnAdd</zorder>
+   <zorder>btnDelete</zorder>
+   <zorder>txtDir</zorder>
+   <zorder>txtRemote</zorder>
+   <zorder>listRepos</zorder>
+   <zorder>labelRemoteURL</zorder>
+   <zorder>labelRemote_2</zorder>
   </widget>
  </widget>
  <resources/>
