@@ -18,33 +18,14 @@ Installation
 6) Start QGIS and navigate to Plugins -> Manage and Install Plugins and tick the box next to GeoGigSync.
 
 
-
-
-Usage
+Additional Packages
 -----
 
-Usage is described `here <./doc/source/usage.rst>`_.
+Both remote and py4j packages need to be added to the python library.
 
-Examples
+Demo Server
 --------
 
-You can find `here <./doc/source/examples.rst>`_ some examples on how to use geogig-py for basic and more complex scripting tasks.
-
-
-
-Architecture. Connectors
--------------------------
-
-The ``repo`` object delegates most of its work to a connector, which communicates with a GeoGig instance. Currently there are two connectors available:
-
-- A CLI-based connector, which uses the console to call the GeoGig command-line interface and parses its output. It assumes that GeoGig is installed in your system and available in your current PATH. Basically, if you open a console, type ``geogig`` and you get the GeoGig help, you are ready to use a ``geogig-py`` repository using the CLI connector. This is far from efficient, as it has to call GeoGig (and thus, start a JVM) each time an operation is performed.
-
-- A Py4J-based connector, which communicates with a GeoGig gateway server. To start the server, you have to run ``geogig-gateway`` on a console. The server is part of a standar GeoGig distribution.
-
-By default, a ``Repository`` object uses a Py4J-based connector if no connector is passed.
-
-Testing
---------
-
-To run unit tests, just run the ``test.py`` module in ``src/test``. Most of the tests are integration tests, but test data is included and the only requisite is to have GeoGig installed and correctly configured. The geogig-gateway must be running
-
+http://52.10.196.73:38080
+and
+http://52.10.196.73:38080

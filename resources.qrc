@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/plugins/GeoGig" >
+    <qresource prefix="/plugins/GeoGigSync" >
         <file>icon.png</file>
     </qresource>
 </RCC>
