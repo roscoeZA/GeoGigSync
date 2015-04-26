@@ -20,8 +20,8 @@ Installation
 
 Additional Packages
 -----
-
-Both remote and py4j packages need to be added to the python library.
+Run easy_install requests
+Run easy_intall py4j
 
 Demo Server
 --------
