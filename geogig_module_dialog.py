@@ -173,6 +173,11 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         repos = geo_repo.GeoRepo(self.remote, self.path, self.repo_type)
         repos.pull_from_remote()
         repos.export_to_shapefiles()
+
+    def set_layers(self, list_layers):
+        for layer in list_layers:
+            if layer:
+                self.listWidget.addItem(layer)
         
 
 

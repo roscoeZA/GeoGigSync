@@ -20,13 +20,16 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from PyQt4 import QtCore
+from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QObject
 from PyQt4.QtGui import QAction, QIcon
 # Initialize Qt resources from file resources.py
+from qgis._core import QgsVectorFileWriter
 import resources_rc
 # Import the code for the dialog
 from geogig_module_dialog import GeoGigDialog
 import os.path
+import qgis.utils
 
 
 
@@ -167,6 +170,8 @@ class GeoGig:
             text=self.tr(u'Sync to GeoGig Repo'),
             callback=self.run,
             parent=self.iface.mainWindow())
+        QObject.connect(self.dlg.btnGetLayers, QtCore.SIGNAL("clicked()"), self.get_layers_click)
+        QObject.connect(self.dlg.btnAddLayer, QtCore.SIGNAL("clicked()"), self.add_layers_click)
 
 
     def unload(self):
@@ -189,3 +194,27 @@ class GeoGig:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
             pass
+
+    def all_layers(self):
+        legend = self.iface.legendInterface()
+        layers = legend.layers()
+        list_layers = []
+        for each_layer in layers:
+            list_layers.append(each_layer.name())
+        return list_layers #"from all layers"
+
+    def get_layers_click(self):
+        self.dlg.set_layers(self.all_layers())
+        # self.dlg.set_layers("from geogig_layers")
+
+    def add_layers_click(self):
+        # Todo: add selection number from list widget
+        # save as shp in root (remember to override existing)
+        iface = qgis.utils.iface
+        legend = self.iface.legendInterface()
+        layers = legend.layers()
+        count = self.dlg.listWidget.row(self.dlg.listWidget.currentItem())
+        print "row.currentitem: %s" % self.dlg.listWidget.row(self.dlg.listWidget.currentItem())
+        layer = layers[count]
+        _writer = QgsVectorFileWriter.writeAsVectorFormat(layer, "/tmp/"+layer.name(), "utf-8",
+                                                         None, "ESRI Shapefile")
