@@ -25,6 +25,8 @@ import geo_repo
 from PyQt4 import QtGui, uic
 import csv
 import sys
+import shutil
+
 
 
 
@@ -161,6 +163,7 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         key = self.repo_dict.keys()[self.key_no]
         value = self.repo_dict.values()[self.key_no]
         del self.repo_dict[key]
+        shutil.rmtree(self.path, ignore_errors=True)
         self.save()
         self.reload()
 

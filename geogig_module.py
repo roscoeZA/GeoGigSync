@@ -30,7 +30,8 @@ import resources_rc
 from geogig_module_dialog import GeoGigDialog
 import os.path
 import qgis.utils
-
+import geo_repo
+from src.geogigpy.geogigexception import GeoGigException
 
 
 class GeoGig:
@@ -216,5 +217,10 @@ class GeoGig:
         count = self.dlg.listWidget.row(self.dlg.listWidget.currentItem())
         print "row.currentitem: %s" % self.dlg.listWidget.row(self.dlg.listWidget.currentItem())
         layer = layers[count]
-        _writer = QgsVectorFileWriter.writeAsVectorFormat(layer, "/tmp/"+layer.name(), "utf-8",
+        dir = self.dlg.path
+        print dir
+        _writer = QgsVectorFileWriter.writeAsVectorFormat(layer, os.path.join(dir, layer.name()), "utf-8",
                                                          None, "ESRI Shapefile")
+        #_writer = QgsVectorFileWriter.writeAsVectorFormat(_vlayer, "/tmp/"+_vlayer.name(), "utf-8",
+        #                                                  None, "ESRI Shapefile")
+        self.dlg.sync_repo()
