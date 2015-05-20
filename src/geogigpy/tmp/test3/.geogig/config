@@ -1,0 +1,15 @@
+[bdbje]
+version = 0.2
+[file]
+version = 1.0
+[storage]
+graph = bdbje
+objects = bdbje
+refs = file
+staging = bdbje
+[remote\origin]
+url = http://52.11.106.206:38080
+fetch = +refs/heads/*:refs/remotes/origin/*
+[branches\master]
+remote = origin
+merge = refs/heads/master

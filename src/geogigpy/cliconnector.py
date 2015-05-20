@@ -554,6 +554,12 @@ class CLIConnector(Connector):
         if user is not None:
             commands.extend(["--user", user])
         self.run(commands)
+
+    # ADDED
+
+    def exportgeojson(self, ref, path, geojsonfile):
+        refandpath = ref + ":" + path
+        self.run(["geojson", "export", refandpath, geojsonfile, "-o", "--defaulttype"])
         
     def exportdiffs(self, commit1, commit2, path, filepath, old = False, overwrite = False):
         commands = ["shp", "export-diff", commit1, commit2, path, filepath]

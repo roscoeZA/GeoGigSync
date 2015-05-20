@@ -1,9 +1,14 @@
 __author__ = 'roscoe'
 import os
+from datetime import datetime
+import qgis.utils
+import qgis.utils
+
 from src.geogigpy import Repository
 from src.geogigpy import geogig
-from datetime import datetime
 from src.geogigpy.geogigexception import GeoGigException
+from qgis.core import QgsVectorLayer, QgsMapLayerRegistry
+
 
 class GeoRepo(object):
 
@@ -30,61 +35,41 @@ class GeoRepo(object):
                 print "New repo initialized at : %s" % self.path
             return local_repo
 
-    def export_to_spatialite(self):
-        print "Trying to export layers to database.sqlite"
-        for t in self.local_repo.trees:
-
-            if t.path not in ("layer_statistics", "views_layer_statistics", "virts_layer_statistics"):
-                try:
-                    self.local_repo.exportsl('HEAD', t.path, self.sql_database)
-                except GeoGigException, e:
-                    print e
-                    continue
 
     def export_to_shapefiles(self):
-        print "Trying to export layers to shapefiles"
         for t in self.local_repo.trees:
-            # print t.path
-
             if t.path not in ("layer_statistics", "views_layer_statistics", "virts_layer_statistics"):
-                # print "t.path: " + t.path
-                try:
-                    self.local_repo.exportshp('HEAD', t.path, os.path.join('HEAD', t.path,
-                                                                           os.path.join(self.path, t.path) + '.shp'))
-                except GeoGigException, e:
-                    print e
-                    continue
+                self.local_repo.exportshp('HEAD', t.path, os.path.join('HEAD', t.path,
+                                                                       os.path.join(self.path, t.path) + '.shp'))
+                # layer = qgis.utils.iface.addVectorLayer(os.path.join(self.path, t.path) + '.shp', t.path, "ogr")
+                vl = QgsVectorLayer("Point", "temporary_points", "memory")
+                print layer.geometryType()
+                pr = vl.dataProvider()
+                layer = qgis.utils.iface.addVectorLayer(os.path.join(self.path, t.path) + '.shp', t.path, "ogr")
 
-    def import_from_spatialite(self):
-        try:
-            self.local_repo.importsl(self.sql_database, 'all')
-            print 'Importing spatialite database'
-        except GeoGigException, e:
-            print e
+                # layers = QgsMapLayerRegistry.instance().mapLayers()
+                # for name, layer in layers.iteritems():
+                #     print 'name: ' + str(name), 'layer type: ' + str(layer.geometryType())
+
+
+                my_dir = self.path
+                print 'deleting %s' % my_dir
+                for fname in os.listdir(my_dir):
+                    if fname.startswith(t.path):
+                        os.remove(os.path.join(my_dir, fname))
 
     def import_all_shapefiles(self):
         for f in os.listdir(self.path):
             if f.endswith(".shp"):
                 shp_path = os.path.join(self.path, f)
-                print shp_path
-                try:
-                    self.local_repo.importshp(shp_path)
-                except GeoGigException, e:
-                    print e
-                    continue
+                self.local_repo.importshp(shp_path)
 
-
-    def add_commit_push(self, name, email, message, input_type):
+    def add_commit_push(self, name, email, message):
         message += " " + str(datetime.now())
         self.local_repo.config(geogig.USER_NAME, name)
         self.local_repo.config(geogig.USER_EMAIL, email)
         try:
-            if input_type == "spatialite":
-                self.import_from_spatialite()
-                print 'Spatialite imported.'
-            else:
-                self.import_all_shapefiles()
-                print 'Shapefiles imported.'
+            self.import_all_shapefiles()
 
         except GeoGigException, e:
             print 'Error with import_from_spatialite()'
@@ -93,11 +78,6 @@ class GeoRepo(object):
             print 'Repo added and committed.'
         except GeoGigException, e:
             print e
-        # try:
-        #     self.local_repo.push("origin")
-        #     print 'Repo pushed.'
-        # except GeoGigException, e:
-        #     print e
 
     def push_to_remote(self):
         try:
@@ -112,6 +92,8 @@ class GeoRepo(object):
             self.local_repo.pull("origin")
         except GeoGigException, e:
             print e
+
+
 
         # Notes:
         # ------------------------------------------------------------------------

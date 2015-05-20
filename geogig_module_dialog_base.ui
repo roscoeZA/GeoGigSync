@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>714</width>
-    <height>499</height>
+    <width>585</width>
+    <height>505</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>460</y>
+     <x>100</x>
+     <y>440</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -32,172 +32,25 @@
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>411</width>
-     <height>231</height>
+     <x>10</x>
+     <y>10</y>
+     <width>541</width>
+     <height>411</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Add</string>
-    </attribute>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>393</width>
-       <height>132</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Name:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" colspan="3">
-       <widget class="QLineEdit" name="txtName"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Email:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" colspan="3">
-       <widget class="QLineEdit" name="txtEmail"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Message:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" colspan="4">
-       <widget class="QLineEdit" name="txtMessage"/>
-      </item>
-      <item row="3" column="0" colspan="2">
-       <widget class="QLabel" name="labelImportSync">
-        <property name="text">
-         <string>Import from:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QRadioButton" name="radioSpatialiteSync">
-        <property name="text">
-         <string>Spatialite</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="3">
-       <widget class="QRadioButton" name="radioShapefilesSync">
-        <property name="text">
-         <string>Shapefiles</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>160</y>
-       <width>269</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="text">
-         <string>Pull</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btnPush">
-        <property name="text">
-         <string>Push</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btnSync">
-        <property name="text">
-         <string>Add</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
      <string>Setup</string>
     </attribute>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>40</y>
-       <width>373</width>
-       <height>100</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="1" colspan="2">
-       <widget class="QRadioButton" name="radioSpatialiteClone">
-        <property name="text">
-         <string>Spatialite</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QRadioButton" name="radioShapefilesClone">
-        <property name="text">
-         <string>Shapefiles</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="labelImport">
-        <property name="text">
-         <string>Export to:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QPushButton" name="btnClone">
-        <property name="text">
-         <string>Execute</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QFrame" name="frame">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>0</y>
-       <width>291</width>
+       <x>10</x>
+       <y>10</y>
+       <width>337</width>
        <height>31</height>
       </rect>
      </property>
@@ -253,98 +106,258 @@
       </property>
      </widget>
     </widget>
+    <widget class="QPushButton" name="btnClone">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>250</y>
+       <width>231</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Execute</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listRepos">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>51</y>
+       <width>341</width>
+       <height>90</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelRemote_2">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>180</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Directory: </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelRemoteURL">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>160</y>
+       <width>60</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Remote: </string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="txtDir">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>180</y>
+       <width>261</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="txtRemote">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>150</y>
+       <width>261</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnDelete">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>213</y>
+       <width>85</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Delete</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnAdd">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>213</y>
+       <width>85</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+    <zorder>btnAdd</zorder>
+    <zorder>listRepos</zorder>
+    <zorder>txtDir</zorder>
+    <zorder>labelRemoteURL</zorder>
+    <zorder>labelRemote_2</zorder>
+    <zorder>txtRemote</zorder>
+    <zorder>btnDelete</zorder>
+    <zorder>frame</zorder>
+    <zorder>btnClone</zorder>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Add</string>
+    </attribute>
+    <widget class="QListWidget" name="listWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>140</y>
+       <width>401</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::MultiSelection</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnGetLayers">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>340</y>
+       <width>98</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Get Layers</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnAddLayer">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>340</y>
+       <width>121</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add layer to repo</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>10</y>
+       <width>43</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Name:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="txtEmail">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>30</y>
+       <width>251</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>test@user.com</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="txtName">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>0</y>
+       <width>251</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>test user</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>40</y>
+       <width>40</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Email:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>70</y>
+       <width>62</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Message:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="txtMessage">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>60</y>
+       <width>251</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Test Message</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnPush">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>340</y>
+       <width>81</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Push</string>
+     </property>
+    </widget>
    </widget>
   </widget>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QLabel" name="lblRepoStatus">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>20</y>
-     <width>274</width>
-     <height>201</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_3">
-    <item row="0" column="0" colspan="3">
-     <widget class="QListWidget" name="listRepos"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="labelRemoteURL">
-      <property name="text">
-       <string>Remote: </string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1" colspan="2">
-     <widget class="QLineEdit" name="txtRemote"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="labelRemote_2">
-      <property name="text">
-       <string>Directory: </string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1" colspan="2">
-     <widget class="QLineEdit" name="txtDir"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QPushButton" name="btnDelete">
-      <property name="text">
-       <string>Delete</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QPushButton" name="btnAdd">
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-   <zorder>btnAdd</zorder>
-   <zorder>btnDelete</zorder>
-   <zorder>txtDir</zorder>
-   <zorder>txtRemote</zorder>
-   <zorder>listRepos</zorder>
-   <zorder>labelRemoteURL</zorder>
-   <zorder>labelRemote_2</zorder>
-  </widget>
-  <widget class="QListWidget" name="listWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>240</y>
-     <width>361</width>
-     <height>181</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnGetLayers">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>430</y>
-     <width>98</width>
-     <height>27</height>
+     <x>40</x>
+     <y>440</y>
+     <width>161</width>
+     <height>17</height>
     </rect>
    </property>
    <property name="text">
-    <string>Get Layers</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnAddLayer">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>430</y>
-     <width>181</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Add layer to repo</string>
+    <string>Label</string>
    </property>
   </widget>
  </widget>

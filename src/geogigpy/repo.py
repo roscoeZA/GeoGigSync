@@ -431,6 +431,9 @@ class Repository(object):
     def exportsl(self, ref, path, database, user = None, table = None):
         '''Export to a SpatiaLite database'''
         self.connector.exportsl(_resolveref(ref), path, database, user, table)
+    # ADDED
+    def exportgeojson(self, ref, path, geojson):
+        self.connector.exportgeojson(_resolveref(ref), path, geojson)
 
     def exportpg(self, ref, path, table, database, user, password = None, schema = None, host = None, port = None, overwrite = False):
         self.connector.exportpg(_resolveref(ref), path, table, database, user, password, schema, host, port, overwrite)

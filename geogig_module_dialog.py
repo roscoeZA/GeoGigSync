@@ -57,70 +57,48 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
         self.get_fields()
         self.reload()
         self.radioRemote.toggled.connect(self.set_repo_type)
-        self.radioShapefilesClone.toggled.connect(self.set_repo_type)
+        # self.radioShapefilesClone.toggled.connect(self.set_repo_type)
         self.btnClone.clicked.connect(self.clone_repo)
-        self.btnSync.clicked.connect(self.sync_repo)
+        # self.btnSync.clicked.connect(self.sync_repo)
         self.btnAdd.clicked.connect(self.set_fields)
         self.btnDelete.clicked.connect(self.delete_field)
         self.btnPush.clicked.connect(self.push)
         self.listRepos.itemClicked.connect(self.set_repo_type)
+        self.lblRepoStatus.setText('Not Connected')
 
     # Change set_repo_type to set_repo
     def set_repo_type(self):
         self.key_no = self.listRepos.row(self.listRepos.currentItem())
         if self.radioLocal.isChecked():
             self.repo_type = "local"
+            self.txtRemote.setEnabled(False)
 
         else:
             self.repo_type = "remote"
+            self.txtRemote.setEnabled(True)
         self.remote = self.repo_dict.keys()[self.key_no]
         self.path = self.repo_dict.values()[self.key_no]
-        if self.radioShapefilesClone.isChecked():
-            self.export_type = "shapefiles"
-        else:
-            self.export_type = "spatialite"
-        self.remote = self.repo_dict.keys()[self.key_no]
-        self.path = self.repo_dict.values()[self.key_no]
+        # self.remote = self.repo_dict.keys()[self.key_no]
+        # self.path = self.repo_dict.values()[self.key_no]
         print self.repo_type
         print self.path
         print self.export_type
         print "remote: " + self.remote
         print "path: " + self.path
 
-
-    # def set_export_type(self):
-    #     if self.radioShapefilesClone.isChecked():
-    #         self.export_type = "shapefiles"
-    #     else:
-    #         self.export_type = "spatialite"
-
     def clone_repo(self):
-        # remote = self.repo_dict.keys()[self.key_no]
-        # path = self.repo_dict.values()[self.key_no]
         sql_database = os.path.join(self.path, 'database.sqlite')
         repos = geo_repo.GeoRepo(self.remote, self.path, self.repo_type)
-        # Ideally should create a boolean decorator to check if connected.
-        if self.radioSpatialiteClone.isChecked():
-            repos.export_to_spatialite()
-        else:
-            repos.export_to_shapefiles()
-
+        repos.export_to_shapefiles()
 
     def sync_repo(self):
-        # remote = self.listRepos.currentItem().text()
-        # path = self.txtDir.text()
         sql_database = self.path + 'database.sqlite'
 
         name = self.txtName.text()
         email = self.txtEmail.text()
         message = self.txtMessage.text()
-        input_type = ""
-        if self.radioSpatialiteSync.isChecked():
-            input_type = "spatialite"
-        else:
-            input_type = "shapefiles"
         repos = geo_repo.GeoRepo(self.remote, self.path, self.repo_type)
-        repos.add_commit_push(name, email, message, input_type)
+        repos.add_commit_push(name, email, message)
 
     def get_fields(self):
         if os.path.isfile(self.fname):
@@ -137,7 +115,6 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
     def set_fields(self):
         new_repo = self.txtRemote.text()
         new_dir = self.txtDir.text()
-        # self.repo_dict.append(new_repo)
         self.repo_dict.update({new_repo: new_dir})
         #self.repo_dict[new_repo] = [new_dir]
         self.save()
@@ -148,7 +125,6 @@ class GeoGigDialog(QtGui.QDialog, FORM_CLASS):
             writer = csv.writer(csvfile)
             for key, value in self.repo_dict.items():
                 writer.writerow([key, value])
-
 
     def reload(self):
         self.listRepos.clear()

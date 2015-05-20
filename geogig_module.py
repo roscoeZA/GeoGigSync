@@ -205,8 +205,11 @@ class GeoGig:
         return list_layers #"from all layers"
 
     def get_layers_click(self):
+        self.dlg.listWidget.clear()
         self.dlg.set_layers(self.all_layers())
-        # self.dlg.set_layers("from geogig_layers")
+
+        # self.dlg.export_to_geojson()
+
 
     def add_layers_click(self):
         # Todo: add selection number from list widget
@@ -215,12 +218,10 @@ class GeoGig:
         legend = self.iface.legendInterface()
         layers = legend.layers()
         count = self.dlg.listWidget.row(self.dlg.listWidget.currentItem())
-        print "row.currentitem: %s" % self.dlg.listWidget.row(self.dlg.listWidget.currentItem())
+        # print "row.currentitem: %s" % self.dlg.listWidget.row(self.dlg.listWidget.currentItem())
         layer = layers[count]
         dir = self.dlg.path
-        print dir
+        print layer.name
         _writer = QgsVectorFileWriter.writeAsVectorFormat(layer, os.path.join(dir, layer.name()), "utf-8",
-                                                         None, "ESRI Shapefile")
-        #_writer = QgsVectorFileWriter.writeAsVectorFormat(_vlayer, "/tmp/"+_vlayer.name(), "utf-8",
-        #                                                  None, "ESRI Shapefile")
+                                                          None, "ESRI Shapefile")
         self.dlg.sync_repo()
